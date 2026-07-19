@@ -1,0 +1,16 @@
+{
+  "name": "regift-office-map-tiles",
+  "type": "tileset",
+  "tilewidth": 32,
+  "tileheight": 32,
+  "tilecount": 3,
+  "columns": 3,
+  "image": "tiles/tiles-atlas-96x32.png",
+  "imagewidth": 96,
+  "imageheight": 32,
+  "tiles": [
+    { "id": 0, "name": "floor-walnut" },
+    { "id": 1, "name": "wall-brick" },
+    { "id": 2, "name": "rug-coral" }
+  ]
+}

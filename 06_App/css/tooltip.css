@@ -1,0 +1,81 @@
+.office-tooltip {
+    position: fixed;
+    z-index: 9999;
+    isolation: isolate;
+    width: min(260px, calc(100vw - 28px));
+    padding: 12px 14px;
+    color: #f7ecd7;
+    font-family: Arial, "PingFang TC", "Noto Sans TC", sans-serif;
+    border: 4px solid #241b17;
+    background: #4a3b33;
+    box-shadow:
+        5px 5px 0 #241b17,
+        inset 0 0 0 2px rgba(235, 202, 148, 0.18);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    margin-top: 7px;
+    transition:
+        opacity 120ms ease,
+        margin-top 120ms ease,
+        visibility 120ms ease;
+}
+
+.office-tooltip.is-liquid {
+    overflow: hidden;
+    border: 1px solid rgba(201, 224, 190, 0.7);
+    border-radius: 12px;
+    background: linear-gradient(145deg, rgba(62, 76, 67, 0.82), rgba(43, 52, 48, 0.68));
+    box-shadow: 0 10px 24px rgba(24, 18, 16, 0.3), inset 0 0 0 1px rgba(222, 239, 211, 0.14);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.office-tooltip.is-visible {
+    opacity: 1;
+    visibility: visible;
+    margin-top: 0;
+}
+
+.tooltip-title {
+    position: relative;
+    z-index: 2;
+    display: block;
+    margin-bottom: 6px;
+    opacity: 1;
+    visibility: visible;
+    color: #e4c98f;
+    font-size: 12pt;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+.tooltip-description {
+    position: relative;
+    z-index: 2;
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    color: #f3ecdf;
+    font-size: 8pt;
+    line-height: 1.65;
+}
+
+.tooltip-target {
+    cursor: help;
+    outline: none;
+}
+
+.tooltip-target::selection {
+    background: transparent;
+}
+
+.tooltip-target:focus-visible {
+    filter: drop-shadow(0 0 5px rgba(244, 204, 126, 0.9));
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .office-tooltip {
+        transition: none;
+    }
+}

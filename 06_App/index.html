@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="description"
+        content="ReGift AI Studio — 一座由 AI Agents 共同工作的溫暖像素辦公室。"
+    >
+    <title>ReGift AI Studio</title>
+
+    <meta name="theme-color" content="#4c6256">
+    <link rel="manifest" href="./manifest.webmanifest">
+    <link rel="icon" href="./assets/regift-app-icon.svg" type="image/svg+xml">
+
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/tooltip.css">
+    <link rel="stylesheet" href="./css/office-v2.css">
+</head>
+
+<body>
+    <main class="app">
+        <section
+            id="welcome-screen"
+            class="screen welcome-screen"
+            aria-labelledby="studio-title"
+        >
+            <div class="ambient-light ambient-light-left"></div>
+            <div class="ambient-light ambient-light-right"></div>
+
+            <div class="window" aria-hidden="true">
+                <div class="window-sky"></div>
+                <div class="window-frame window-frame-vertical"></div>
+                <div class="window-frame window-frame-horizontal"></div>
+            </div>
+
+            <div class="welcome-card">
+                <p class="eyebrow">A Cozy AI Creative Office</p>
+                <h1 id="studio-title">
+                    <span class="brand-name">ReGift</span>
+                    <span class="studio-name">AI Studio</span>
+                </h1>
+                <p class="welcome-message">Welcome back to ReGift AI Studio.</p>
+                <button id="enter-studio-button" class="pixel-button" type="button">
+                    Enter Studio
+                </button>
+                <p class="version-label">Spatial Navigation · v7.5.0</p>
+            </div>
+
+            <div class="floor" aria-hidden="true">
+                <div class="floor-shadow"></div>
+                <div class="plant">
+                    <div class="plant-leaf leaf-one"></div>
+                    <div class="plant-leaf leaf-two"></div>
+                    <div class="plant-leaf leaf-three"></div>
+                    <div class="plant-pot"></div>
+                </div>
+                <div class="small-table">
+                    <div class="table-top"></div>
+                    <div class="table-leg table-leg-left"></div>
+                    <div class="table-leg table-leg-right"></div>
+                    <div class="coffee-cup"></div>
+                </div>
+            </div>
+        </section>
+
+        <section
+            id="studio-screen"
+            class="screen studio-screen"
+            aria-labelledby="office-title"
+            hidden
+        >
+            <div id="office-stage" class="office-stage">
+                <header class="studio-toolbar">
+                    <div class="toolbar-brand">
+                        <span class="toolbar-kicker">ReGift AI Studio</span>
+                        <h2 id="office-title">Isometric Agent Office · v7.5.0</h2>
+                    </div>
+
+                    <div class="toolbar-status">
+                        <span class="online-light"></span>
+                        <span id="online-agent-count">5 Agents Online</span>
+                        <span id="local-save-status" class="local-save-status">Saved locally</span>
+                    </div>
+
+                    <div class="toolbar-actions">
+                        <button
+                            id="toggle-office-controls"
+                            class="toolbar-button controls-button"
+                            type="button"
+                            aria-pressed="false"
+                        >
+                            Controls
+                        </button>
+                        <button
+                            id="toggle-team-chat"
+                            class="toolbar-button chat-button"
+                            type="button"
+                            aria-pressed="false"
+                        >
+                            Team Chat
+                        </button>
+                        <button
+                            id="export-office-data"
+                            class="toolbar-button export-button"
+                            type="button"
+                        >
+                            Export Data
+                        </button>
+                        <button
+                            id="import-office-data"
+                            class="toolbar-button export-button"
+                            type="button"
+                        >
+                            Import Data
+                        </button>
+                        <input
+                            id="import-office-file"
+                            type="file"
+                            accept="application/json,.json"
+                            hidden
+                        >
+                        <button
+                            id="toggle-team-meeting"
+                            class="toolbar-button meeting-button"
+                            type="button"
+                            aria-pressed="false"
+                        >
+                            Team Meeting
+                        </button>
+                        <button
+                            id="toggle-agent-state"
+                            class="toolbar-button break-button"
+                            type="button"
+                            aria-pressed="false"
+                        >
+                            Take a Break
+                        </button>
+                        <button
+                            id="back-button"
+                            class="toolbar-button"
+                            type="button"
+                        >
+                            Back
+                        </button>
+                    </div>
+                </header>
+
+                <div id="office-world" class="office-world">
+                    <div class="office-scene-layer">
+                    <div class="world-sunbeam" aria-hidden="true"></div>
+                    <div class="world-plant plant-a" aria-hidden="true"></div>
+                    <div class="world-plant plant-b" aria-hidden="true"></div>
+
+                    <!-- 01 Design Area -->
+                    <section
+                        class="office-zone design-zone tooltip-target"
+                        tabindex="0"
+                        data-department-id="design-agent"
+                        data-tooltip-title="Design Area"
+                        data-tooltip-description="負責 ReGift 卡片、書約、包裝與品牌視覺。"
+                    >
+                        <div class="zone-heading"><b>01</b><span>Design Area</span></div>
+                        <div class="zone-window"><i></i><i></i></div>
+                        <div class="zone-board design-board">
+                            <i></i><i></i><i></i><strong>MOOD</strong>
+                        </div>
+                        <div class="pixel-desk design-desk-v1">
+                            <span class="desk-monitor design-monitor"><i></i><i></i></span>
+                            <span class="desk-surface"></span>
+                            <span class="desk-foot foot-left"></span>
+                            <span class="desk-foot foot-right"></span>
+                            <span class="desk-cup"></span>
+                        </div>
+                        <div class="zone-task">
+                            <small>DESIGNING</small>
+                            <span id="design-task">正在載入設計任務...</span>
+                        </div>
+                    </section>
+
+                    <!-- 02 Copywriting Area -->
+                    <section
+                        class="office-zone copy-zone tooltip-target"
+                        tabindex="0"
+                        data-department-id="copywriter-agent"
+                        data-tooltip-title="Copywriting Area"
+                        data-tooltip-description="撰寫品牌故事、商品介紹與社群內容。"
+                    >
+                        <div class="zone-heading"><b>02</b><span>Copywriting Area</span></div>
+                        <div class="mini-bookshelf"><i></i><i></i><i></i><i></i><i></i></div>
+                        <div class="pixel-desk copy-desk-v1">
+                            <span class="typewriter"><i></i><b></b></span>
+                            <span class="desk-surface"></span>
+                            <span class="desk-foot foot-left"></span>
+                            <span class="desk-foot foot-right"></span>
+                        </div>
+                        <div class="zone-task">
+                            <small>WRITING</small>
+                            <span id="copywriter-task">正在載入文案任務...</span>
+                        </div>
+                    </section>
+
+                    <!-- 03 Marketing Area -->
+                    <section
+                        class="office-zone marketing-zone tooltip-target"
+                        tabindex="0"
+                        data-department-id="marketing-agent"
+                        data-tooltip-title="Marketing Area"
+                        data-tooltip-description="規劃 ReGift 社群內容、活動曝光與成效追蹤。"
+                    >
+                        <div class="zone-heading"><b>03</b><span>Marketing Area</span></div>
+                        <div class="chart-board"><i></i><i></i><i></i><b></b><b></b></div>
+                        <div class="pixel-desk marketing-desk-v1">
+                            <span class="desk-monitor chart-monitor"><i></i><i></i><i></i></span>
+                            <span class="desk-surface"></span>
+                            <span class="desk-foot foot-left"></span>
+                            <span class="desk-foot foot-right"></span>
+                            <span class="desk-phone"></span>
+                        </div>
+                        <div class="zone-task">
+                            <small>CAMPAIGN</small>
+                            <span id="marketing-task">正在載入行銷任務...</span>
+                        </div>
+                    </section>
+
+                    <!-- 04 Photography Studio -->
+                    <section
+                        class="office-zone photo-zone tooltip-target"
+                        tabindex="0"
+                        data-department-id="photography-agent"
+                        data-tooltip-title="Photography Studio"
+                        data-tooltip-description="拍攝商品主視覺、情境照片與電商素材。"
+                    >
+                        <div class="zone-heading"><b>04</b><span>Photography Studio</span></div>
+                        <div class="photo-backdrop-v1"><i></i><b>ReGift</b></div>
+                        <div class="studio-light-v1"><i></i><b></b></div>
+                        <div class="camera-v1"><i></i><b></b><em></em></div>
+                        <div class="zone-task">
+                            <small>SHOOTING</small>
+                            <span id="photography-task">正在載入攝影任務...</span>
+                        </div>
+                    </section>
+
+                    <!-- 05 Shipping Area -->
+                    <section
+                        class="office-zone shipping-zone tooltip-target"
+                        tabindex="0"
+                        data-department-id="shipping-agent"
+                        data-tooltip-title="Shipping Area"
+                        data-tooltip-description="負責訂單確認、品質檢查、包裝與物流。"
+                    >
+                        <div class="zone-heading"><b>05</b><span>Shipping Area</span></div>
+                        <div class="box-shelf"><i></i><i></i><i></i></div>
+                        <div class="packing-desk">
+                            <span class="parcel-v1"></span>
+                            <span class="label-v1"></span>
+                            <span class="packing-top"></span>
+                            <span class="packing-leg leg-a"></span>
+                            <span class="packing-leg leg-b"></span>
+                        </div>
+                        <div class="zone-task">
+                            <small>PACKING</small>
+                            <span id="shipping-task">正在載入出貨任務...</span>
+                        </div>
+                    </section>
+
+                    <!-- Product Showcase -->
+                    <section
+                        class="office-zone showcase-zone tooltip-target"
+                        tabindex="0"
+                        data-office-interaction="showcase"
+                        data-tooltip-title="Product Showcase"
+                        data-tooltip-description="點擊後安排一位 Agent 前往查看 ReGift 完成作品。"
+                    >
+                        <div class="compact-heading">Product Showcase</div>
+                        <div class="showcase-shelf">
+                            <i class="sample baby-sample">Baby</i>
+                            <i class="sample vow-sample">Vow</i>
+                            <i class="sample thanks-sample">Thanks</i>
+                            <b>ReGift</b>
+                        </div>
+                    </section>
+
+                    <!-- Coffee Bar -->
+                    <section
+                        class="office-zone coffee-zone tooltip-target"
+                        tabindex="0"
+                        data-office-interaction="coffee"
+                        data-tooltip-title="Coffee Bar"
+                        data-tooltip-description="點擊後安排一位 Agent 前往補充咖啡與靈感。"
+                    >
+                        <div class="compact-heading">Coffee Bar</div>
+                        <div class="coffee-machine-v1"><i></i><b></b><em></em></div>
+                        <div class="coffee-counter-v1"><i></i><b></b><em></em></div>
+                    </section>
+
+                    <!-- AI Assistant Hub -->
+                    <section
+                        class="office-zone ai-zone tooltip-target"
+                        tabindex="0"
+                        data-tooltip-title="AI Assistant Hub"
+                        data-tooltip-description="按住標題列即可拖曳，位置會自動保存。"
+                    >
+                        <div class="compact-heading">AI Assistant Hub</div>
+                        <div class="ai-console">
+                            <button id="open-studio-dashboard" class="ai-core" type="button" aria-label="開啟 Studio Control Dashboard">AI</button>
+                            <span class="ai-line line-one"></span>
+                            <span class="ai-line line-two"></span>
+                            <span class="ai-line line-three"></span>
+                        </div>
+                        <div class="ai-queue">
+                            <small>TODAY</small>
+                            <span id="studio-activity">5 Agents 正在同步工作</span>
+                        </div>
+                    </section>
+
+                    <!-- Sofa Lounge -->
+                    <section
+                        class="office-zone lounge-zone tooltip-target"
+                        tabindex="0"
+                        data-office-interaction="lounge"
+                        data-tooltip-title="Sofa Lounge"
+                        data-tooltip-description="點擊後安排一位 Agent 前往短暫休息。"
+                    >
+                        <div class="compact-heading">Sofa Lounge</div>
+                        <div class="floor-lamp-v1"><i></i><b></b><em></em></div>
+                        <div class="sofa-v1">
+                            <span class="sofa-back-v1"></span>
+                            <span class="sofa-seat-v1"></span>
+                            <span class="sofa-arm-v1 arm-a"></span>
+                            <span class="sofa-arm-v1 arm-b"></span>
+                            <span class="cushion-v1 cushion-a"></span>
+                            <span class="cushion-v1 cushion-b"></span>
+                        </div>
+                        <div class="lounge-table-v1"><i></i><b></b></div>
+                        <div class="lounge-rug-v1"></div>
+                    </section>
+
+                    <!-- Agents：獨立定位，方便之後在辦公室內移動 -->
+                    <div
+                        id="design-agent"
+                        class="office-agent design-agent-v1 tooltip-target"
+                        tabindex="0"
+                        data-agent-id="design-agent"
+                        data-tooltip-title="Design Agent"
+                        data-tooltip-description="負責品牌視覺、卡片、書約與包裝設計。"
+                    >
+                        <span class="agent-sprite-frame" aria-hidden="true"></span>
+                        <img class="agent-sprite" src="./assets/agents/design-agent.png" alt="" draggable="false">
+                    </div>
+
+                    <div
+                        id="copywriter-agent"
+                        class="office-agent copywriter-agent-v1 tooltip-target"
+                        tabindex="0"
+                        data-agent-id="copywriter-agent"
+                        data-tooltip-title="Copywriter Agent"
+                        data-tooltip-description="負責品牌故事、商品文案與社群內容。"
+                    >
+                        <span class="agent-sprite-frame" aria-hidden="true"></span>
+                        <img class="agent-sprite" src="./assets/agents/copywriter-agent.png" alt="" draggable="false">
+                    </div>
+
+                    <div
+                        id="marketing-agent"
+                        class="office-agent marketing-agent-v1 tooltip-target"
+                        tabindex="0"
+                        data-agent-id="marketing-agent"
+                        data-tooltip-title="Marketing Agent"
+                        data-tooltip-description="負責社群企劃、活動曝光與成效追蹤。"
+                    >
+                        <span class="agent-sprite-frame" aria-hidden="true"></span>
+                        <img class="agent-sprite" src="./assets/agents/marketing-agent.png" alt="" draggable="false">
+                    </div>
+
+                    <div
+                        id="photography-agent"
+                        class="office-agent photography-agent-v1 tooltip-target"
+                        tabindex="0"
+                        data-agent-id="photography-agent"
+                        data-tooltip-title="Photography Agent"
+                        data-tooltip-description="負責商品攝影、燈光配置與影像整理。"
+                    >
+                        <span class="agent-sprite-frame" aria-hidden="true"></span>
+                        <img class="agent-sprite" src="./assets/agents/photography-agent.png" alt="" draggable="false">
+                    </div>
+
+                    <div
+                        id="shipping-agent"
+                        class="office-agent shipping-agent-v1 tooltip-target"
+                        tabindex="0"
+                        data-agent-id="shipping-agent"
+                        data-tooltip-title="Shipping Agent"
+                        data-tooltip-description="負責訂單確認、品質檢查、包裝與物流。"
+                    >
+                        <span class="agent-sprite-frame" aria-hidden="true"></span>
+                        <img class="agent-sprite" src="./assets/agents/shipping-agent.png" alt="" draggable="false">
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Agent 控制中心 -->
+                <aside
+                    id="agent-control-panel"
+                    class="agent-control-panel"
+                    aria-labelledby="panel-agent-name"
+                    aria-hidden="true"
+                >
+                    <header class="panel-header">
+                        <div>
+                            <span class="panel-kicker">AGENT CONTROL</span>
+                            <h3 id="panel-agent-name">Select an Agent</h3>
+                        </div>
+                        <button
+                            id="close-agent-panel"
+                            class="panel-close"
+                            type="button"
+                            aria-label="關閉 Agent 控制中心"
+                        >
+                            ×
+                        </button>
+                    </header>
+
+                    <div class="panel-status-row">
+                        <span id="panel-status-light" class="panel-status-light"></span>
+                        <span id="panel-agent-status">Waiting</span>
+                        <span id="panel-agent-role" class="panel-role">—</span>
+                    </div>
+
+                    <p id="panel-agent-description" class="panel-description">
+                        點擊辦公室中的 Agent 查看工作狀態。
+                    </p>
+
+                    <section class="panel-task-section">
+                        <span class="panel-section-label">CURRENT TASK</span>
+                        <p id="panel-current-task">—</p>
+                        <div
+                            class="task-progress-track"
+                            role="progressbar"
+                            aria-label="目前任務進度"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                            aria-valuenow="0"
+                        >
+                            <span id="panel-progress-bar" class="task-progress-bar"></span>
+                        </div>
+                        <span id="panel-progress-label" class="panel-progress-label">0%</span>
+                    </section>
+
+                    <form id="assign-task-form" class="assign-task-form">
+                        <label for="new-agent-task">ASSIGN NEW TASK</label>
+                        <div class="task-input-row">
+                            <input
+                                id="new-agent-task"
+                                name="task"
+                                type="text"
+                                maxlength="60"
+                                placeholder="輸入新任務..."
+                                autocomplete="off"
+                            >
+                            <button type="submit">Assign</button>
+                        </div>
+                    </form>
+
+                    <div class="panel-action-row">
+                        <button id="toggle-selected-agent" type="button">
+                            Pause Agent
+                        </button>
+                        <button id="open-chatgpt-bridge" class="bridge-launch-button" type="button">
+                            ChatGPT Bridge
+                        </button>
+                    </div>
+
+                    <section class="panel-queue-section">
+                        <span class="panel-section-label">TASK QUEUE</span>
+                        <ol id="panel-task-queue" class="panel-task-queue"></ol>
+                    </section>
+
+                    <section class="activity-section">
+                        <span class="panel-section-label">ACTIVITY LOG</span>
+                        <ul id="office-activity-log" class="office-activity-log"></ul>
+                    </section>
+                </aside>
+
+                <!-- 07-1 Office Controls -->
+                <aside
+                    id="office-controls-panel"
+                    class="office-controls-panel"
+                    aria-labelledby="office-controls-title"
+                    aria-hidden="true"
+                >
+                    <header class="office-controls-header">
+                        <div>
+                            <span class="office-controls-kicker">07-3 SPATIAL NAVIGATION</span>
+                            <h3 id="office-controls-title">Office Controls</h3>
+                        </div>
+                        <button id="close-office-controls" class="panel-close" type="button" aria-label="關閉辦公室控制視窗">×</button>
+                    </header>
+
+                    <p class="office-controls-description">調整安全路線、人物動作與辦公室環境。設定會自動保存在本機。</p>
+
+                    <label class="office-control-row" for="office-motion-speed">
+                        <span><b>Animation Speed</b><small>人物移動與動作速度</small></span>
+                        <select id="office-motion-speed">
+                            <option value="0.75">Calm</option>
+                            <option value="1" selected>Normal</option>
+                            <option value="1.25">Active</option>
+                        </select>
+                    </label>
+
+                    <label class="office-control-row" for="office-lighting-mode">
+                        <span><b>Lighting</b><small>切換辦公室環境光線</small></span>
+                        <select id="office-lighting-mode">
+                            <option value="day">Day</option>
+                            <option value="warm" selected>Warm</option>
+                            <option value="night">Night</option>
+                        </select>
+                    </label>
+
+                    <label class="office-toggle-row">
+                        <span><b>Agent Movement</b><small>允許人物在工作區移動</small></span>
+                        <input id="office-movement-toggle" type="checkbox" checked>
+                    </label>
+
+                    <label class="office-toggle-row">
+                        <span><b>Work Motions</b><small>啟用待機與工作微動作</small></span>
+                        <input id="office-work-motion-toggle" type="checkbox" checked>
+                    </label>
+
+                    <label class="office-toggle-row">
+                        <span><b>Emotion Bubbles</b><small>隨機顯示六種人物表情</small></span>
+                        <input id="office-emotion-toggle" type="checkbox" checked>
+                    </label>
+
+                    <section class="office-interaction-guide">
+                        <span class="panel-section-label">INTERACTIVE LOCATIONS</span>
+                        <div><b>☕</b> Coffee Bar</div>
+                        <div><b>▣</b> Product Showcase</div>
+                        <div><b>⌁</b> Sofa Lounge</div>
+                    </section>
+
+                    <div class="office-controls-actions">
+                        <button id="reset-agent-positions" type="button">Reset Positions</button>
+                        <button id="send-agent-to-coffee" type="button">Coffee Break</button>
+                    </div>
+                </aside>
+
+                <!-- 右側員工討論視窗 -->
+                <aside
+                    id="team-chat-panel"
+                    class="team-chat-panel"
+                    aria-labelledby="team-chat-title"
+                    aria-hidden="true"
+                >
+                    <header class="team-chat-header">
+                        <div>
+                            <span class="chat-kicker"># STUDIO-GENERAL</span>
+                            <h3 id="team-chat-title">Studio Team Chat</h3>
+                        </div>
+                        <div class="panel-header-actions">
+                            <button id="back-team-chat-to-hub" class="hub-back-button" type="button">← BACK</button>
+                            <button id="close-team-chat" class="panel-close" type="button" aria-label="關閉員工討論視窗">×</button>
+                        </div>
+                    </header>
+
+                    <div class="chat-online-row">
+                        <span class="chat-online-light"></span>
+                        <span>5 Agents online</span>
+                        <span class="chat-save-note">Messages saved locally</span>
+                    </div>
+
+                    <div
+                        id="team-chat-messages"
+                        class="team-chat-messages"
+                        aria-live="polite"
+                    ></div>
+
+                    <form id="team-chat-form" class="team-chat-form">
+                        <label for="team-chat-input">MESSAGE AS CEO</label>
+                        <div class="team-chat-input-row">
+                            <input
+                                id="team-chat-input"
+                                name="message"
+                                type="text"
+                                maxlength="120"
+                                placeholder="傳送訊息給 ReGift 團隊..."
+                                autocomplete="off"
+                            >
+                            <button type="submit">Send</button>
+                        </div>
+                    </form>
+                </aside>
+
+                <!-- Department Workspace System -->
+                <section
+                    id="department-workspace"
+                    class="department-workspace"
+                    aria-labelledby="department-workspace-title"
+                    aria-hidden="true"
+                >
+                    <header id="department-workspace-handle" class="department-workspace-header">
+                        <div>
+                            <span class="department-workspace-kicker">DEPARTMENT WORKSPACE · DRAG</span>
+                            <h3 id="department-workspace-title">Design Area</h3>
+                        </div>
+                        <div class="panel-header-actions">
+                            <button id="back-department-to-hub" class="hub-back-button" type="button">← BACK</button>
+                            <button id="close-department-workspace" class="panel-close" type="button" aria-label="關閉部門工作區">×</button>
+                        </div>
+                    </header>
+
+                    <nav id="department-workspace-nav" class="department-workspace-nav" aria-label="切換部門">
+                        <button type="button" data-workspace-agent="design-agent">Design</button>
+                        <button type="button" data-workspace-agent="copywriter-agent">Copy</button>
+                        <button type="button" data-workspace-agent="marketing-agent">Marketing</button>
+                        <button type="button" data-workspace-agent="photography-agent">Photo</button>
+                        <button type="button" data-workspace-agent="shipping-agent">Shipping</button>
+                    </nav>
+
+                    <div class="department-workspace-summary">
+                        <div>
+                            <span class="workspace-label">ROLE</span>
+                            <strong id="department-workspace-role">Brand &amp; Visual Designer</strong>
+                        </div>
+                        <span id="department-workspace-status" class="department-workspace-status">WORKING</span>
+                    </div>
+
+                    <section class="department-current-task">
+                        <span class="workspace-label">CURRENT TASK</span>
+                        <strong id="department-workspace-task">—</strong>
+                        <div class="department-progress-track">
+                            <span id="department-workspace-progress"></span>
+                        </div>
+                        <small id="department-workspace-progress-label">0%</small>
+                    </section>
+
+                    <section class="department-checklist-section">
+                        <span class="workspace-label">WORK CHECKLIST</span>
+                        <div id="department-workspace-checklist" class="department-workspace-checklist"></div>
+                    </section>
+
+                    <label class="workspace-label" for="department-workspace-notes">DEPARTMENT NOTES</label>
+                    <textarea
+                        id="department-workspace-notes"
+                        class="department-workspace-notes"
+                        maxlength="500"
+                        placeholder="記錄需求、待確認事項或工作備註..."
+                    ></textarea>
+
+                    <div class="department-workspace-actions">
+                        <button id="save-department-notes" type="button">Save Notes</button>
+                        <button id="complete-department-task" type="button">Complete Task</button>
+                    </div>
+                </section>
+
+                <!-- Studio Control Dashboard -->
+                <section
+                    id="studio-dashboard"
+                    class="studio-dashboard"
+                    aria-labelledby="studio-dashboard-title"
+                    aria-hidden="true"
+                >
+                    <header id="studio-dashboard-handle" class="studio-dashboard-header">
+                        <div>
+                            <span class="studio-dashboard-kicker">AI ASSISTANT HUB · CONTROL CENTER · DRAG</span>
+                            <h3 id="studio-dashboard-title">Studio Control Dashboard</h3>
+                        </div>
+                        <button id="close-studio-dashboard" class="panel-close" type="button" aria-label="關閉工作室總覽">×</button>
+                    </header>
+
+                    <section class="studio-dashboard-overview">
+                        <div>
+                            <span class="workspace-label">STUDIO PROGRESS</span>
+                            <strong id="studio-dashboard-progress-label">0%</strong>
+                        </div>
+                        <div class="studio-dashboard-progress-track">
+                            <span id="studio-dashboard-progress"></span>
+                        </div>
+                        <div class="studio-dashboard-stats">
+                            <span><b id="studio-dashboard-online">5</b> Online</span>
+                            <span><b id="studio-dashboard-results">0</b> Results</span>
+                            <span><b id="studio-dashboard-tasks">5</b> Active Tasks</span>
+                            <span><b id="studio-dashboard-overdue">0</b> Overdue</span>
+                        </div>
+                    </section>
+
+                    <section class="studio-dashboard-agents-section">
+                        <span class="workspace-label">DEPARTMENT STATUS · CLICK TO OPEN WORKSPACE</span>
+                        <div id="studio-dashboard-agents" class="studio-dashboard-agents"></div>
+                    </section>
+
+                    <section class="studio-dashboard-activity-section">
+                        <span class="workspace-label">RECENT ACTIVITY</span>
+                        <div id="studio-dashboard-activity" class="studio-dashboard-activity"></div>
+                    </section>
+
+                    <div class="studio-dashboard-actions">
+                        <button id="dashboard-team-meeting" type="button">Start Team Meeting</button>
+                        <button id="copy-daily-brief" type="button">Copy Daily Brief</button>
+                        <button id="open-deliverables-library" type="button">Results Library</button>
+                        <button id="open-project-board" type="button">Project Board</button>
+                        <button id="open-automation-center" type="button">Workflow Center</button>
+                        <button id="open-studio-timeline" type="button">Studio Timeline</button>
+                    </div>
+                </section>
+
+                <!-- Studio Timeline & Milestones -->
+                <section id="studio-timeline" class="studio-timeline" aria-labelledby="studio-timeline-title" aria-hidden="true">
+                    <header id="studio-timeline-handle" class="studio-timeline-header">
+                        <div>
+                            <span class="studio-timeline-kicker">CALENDAR · DEPENDENCIES · MILESTONES · DRAG</span>
+                            <h3 id="studio-timeline-title">Studio Timeline</h3>
+                        </div>
+                        <div class="panel-header-actions">
+                            <button id="back-timeline-to-hub" class="hub-back-button" type="button">← BACK</button>
+                            <button id="close-studio-timeline" class="panel-close" type="button" aria-label="關閉工作室時程">×</button>
+                        </div>
+                    </header>
+
+                    <div class="timeline-toolbar">
+                        <button id="timeline-previous-week" type="button">← Previous</button>
+                        <strong id="timeline-week-label">This Week</strong>
+                        <button id="timeline-today" type="button">Today</button>
+                        <button id="timeline-next-week" type="button">Next →</button>
+                        <button id="enable-studio-notifications" type="button">Enable Notifications</button>
+                    </div>
+
+                    <section class="timeline-summary">
+                        <span><b id="timeline-due-count">0</b> Due This Week</span>
+                        <span><b id="timeline-blocked-count">0</b> Blocked</span>
+                        <span><b id="timeline-milestone-count">0</b> Open Milestones</span>
+                        <span><b>100%</b> 06_APP Complete</span>
+                    </section>
+
+                    <div class="timeline-body">
+                        <section class="timeline-calendar-section">
+                            <span class="workspace-label">WEEKLY DELIVERY CALENDAR</span>
+                            <div id="timeline-week-grid" class="timeline-week-grid"></div>
+                        </section>
+                        <aside class="timeline-milestones-section">
+                            <span class="workspace-label">STUDIO MILESTONES</span>
+                            <form id="milestone-form" class="milestone-form">
+                                <input id="milestone-title" type="text" maxlength="70" placeholder="新增里程碑..." required>
+                                <input id="milestone-date" type="date" required>
+                                <button type="submit">Add</button>
+                            </form>
+                            <div id="milestone-list" class="milestone-list"></div>
+                        </aside>
+                    </div>
+
+                    <p class="timeline-help">任務日期來自 Project Board；Blocked 表示前置任務尚未完成。里程碑與通知設定會保存在本機。</p>
+                </section>
+
+                <!-- Studio Deliverables Library -->
+                <section
+                    id="deliverables-library"
+                    class="deliverables-library"
+                    aria-labelledby="deliverables-library-title"
+                    aria-hidden="true"
+                >
+                    <header id="deliverables-library-handle" class="deliverables-library-header">
+                        <div>
+                            <span class="deliverables-library-kicker">STUDIO ARCHIVE · SAVED LOCALLY · DRAG</span>
+                            <h3 id="deliverables-library-title">Studio Deliverables Library</h3>
+                        </div>
+                        <div class="panel-header-actions">
+                            <button id="back-deliverables-to-hub" class="hub-back-button" type="button">← BACK</button>
+                            <button id="close-deliverables-library" class="panel-close" type="button" aria-label="關閉成果資料庫">×</button>
+                        </div>
+                    </header>
+
+                    <div class="deliverables-library-tools">
+                        <select id="deliverables-filter" aria-label="依部門篩選成果">
+                            <option value="all">All Departments</option>
+                            <option value="design-agent">Design</option>
+                            <option value="copywriter-agent">Copywriting</option>
+                            <option value="marketing-agent">Marketing</option>
+                            <option value="photography-agent">Photography</option>
+                            <option value="shipping-agent">Shipping</option>
+                        </select>
+                        <input id="deliverables-search" type="search" placeholder="搜尋任務或成果內容..." autocomplete="off">
+                        <span id="deliverables-count">0 Results</span>
+                    </div>
+
+                    <div class="deliverables-library-body">
+                        <div id="deliverables-list" class="deliverables-list"></div>
+                        <article class="deliverables-preview">
+                            <div id="deliverables-empty" class="deliverables-empty">
+                                尚未選擇成果。請從左側清單選擇一筆記錄。
+                            </div>
+                            <div id="deliverables-detail" class="deliverables-detail" hidden>
+                                <span id="deliverables-detail-agent" class="workspace-label">AGENT</span>
+                                <h4 id="deliverables-detail-task">Task</h4>
+                                <time id="deliverables-detail-time"></time>
+                                <div id="deliverables-detail-content" class="deliverables-detail-content"></div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="deliverables-library-actions">
+                        <button id="copy-deliverable" type="button" disabled>Copy Result</button>
+                        <button id="download-deliverable" type="button" disabled>Download .txt</button>
+                        <button id="delete-deliverable" class="delete-deliverable" type="button" disabled>Delete Result</button>
+                    </div>
+                </section>
+
+                <!-- Studio Project Board -->
+                <section id="project-board" class="project-board" aria-labelledby="project-board-title" aria-hidden="true">
+                    <header id="project-board-handle" class="project-board-header">
+                        <div>
+                            <span class="project-board-kicker">CROSS-DEPARTMENT TASKS · DRAG</span>
+                            <h3 id="project-board-title">Studio Project Board</h3>
+                        </div>
+                        <div class="panel-header-actions">
+                            <button id="back-project-to-hub" class="hub-back-button" type="button">← BACK</button>
+                            <button id="close-project-board" class="panel-close" type="button" aria-label="關閉專案看板">×</button>
+                        </div>
+                    </header>
+
+                    <form id="project-board-add-form" class="project-board-add-form">
+                        <select id="project-board-agent" aria-label="選擇部門">
+                            <option value="design-agent">Design</option>
+                            <option value="copywriter-agent">Copywriting</option>
+                            <option value="marketing-agent">Marketing</option>
+                            <option value="photography-agent">Photography</option>
+                            <option value="shipping-agent">Shipping</option>
+                        </select>
+                        <input id="project-board-task-input" type="text" maxlength="60" placeholder="新增跨部門任務..." autocomplete="off">
+                        <select id="project-board-priority" aria-label="任務優先級">
+                            <option value="normal">Normal</option>
+                            <option value="low">Low</option>
+                            <option value="high">High</option>
+                            <option value="urgent">Urgent</option>
+                        </select>
+                        <input id="project-board-due-date" type="date" aria-label="任務截止日期">
+                        <button type="submit">Add Task</button>
+                    </form>
+
+                    <div class="project-board-filters">
+                        <select id="project-filter-agent" aria-label="依部門篩選">
+                            <option value="all">All Departments</option>
+                            <option value="design-agent">Design</option>
+                            <option value="copywriter-agent">Copywriting</option>
+                            <option value="marketing-agent">Marketing</option>
+                            <option value="photography-agent">Photography</option>
+                            <option value="shipping-agent">Shipping</option>
+                        </select>
+                        <select id="project-filter-priority" aria-label="依優先級篩選">
+                            <option value="all">All Priorities</option>
+                            <option value="urgent">Urgent</option>
+                            <option value="high">High</option>
+                            <option value="normal">Normal</option>
+                            <option value="low">Low</option>
+                        </select>
+                        <input id="project-board-search" type="search" placeholder="搜尋看板任務..." autocomplete="off">
+                        <button id="export-project-board" type="button">Export CSV</button>
+                    </div>
+
+                    <div class="project-board-columns">
+                        <section class="project-column" data-board-status="queue">
+                            <header><span>QUEUE</span><b id="project-count-queue">0</b></header>
+                            <div id="project-list-queue" class="project-card-list"></div>
+                        </section>
+                        <section class="project-column" data-board-status="working">
+                            <header><span>WORKING</span><b id="project-count-working">0</b></header>
+                            <div id="project-list-working" class="project-card-list"></div>
+                        </section>
+                        <section class="project-column" data-board-status="review">
+                            <header><span>REVIEW</span><b id="project-count-review">0</b></header>
+                            <div id="project-list-review" class="project-card-list"></div>
+                        </section>
+                        <section class="project-column" data-board-status="done">
+                            <header><span>DONE</span><b id="project-count-done">0</b></header>
+                            <div id="project-list-done" class="project-card-list"></div>
+                        </section>
+                    </div>
+
+                    <p class="project-board-help">拖曳卡片改變階段；點擊 Edit 可修改優先級、截止日、階段與專案備註。</p>
+
+                    <aside id="project-task-inspector" class="project-task-inspector" aria-hidden="true">
+                        <header>
+                            <div>
+                                <span class="project-board-kicker">TASK INSPECTOR</span>
+                                <h4 id="project-inspector-title">Task</h4>
+                            </div>
+                            <button id="close-project-inspector" class="panel-close" type="button" aria-label="關閉任務編輯器">×</button>
+                        </header>
+                        <span id="project-inspector-agent" class="project-inspector-agent">Department</span>
+                        <form id="project-inspector-form">
+                            <label>STATUS
+                                <select id="project-inspector-status">
+                                    <option value="queue">Queue</option>
+                                    <option value="working">Working</option>
+                                    <option value="review">Review</option>
+                                    <option value="done">Done</option>
+                                </select>
+                            </label>
+                            <label>PRIORITY
+                                <select id="project-inspector-priority">
+                                    <option value="low">Low</option>
+                                    <option value="normal">Normal</option>
+                                    <option value="high">High</option>
+                                    <option value="urgent">Urgent</option>
+                                </select>
+                            </label>
+                            <label>DUE DATE
+                                <input id="project-inspector-due-date" type="date">
+                            </label>
+                            <label>DEPENDS ON
+                                <select id="project-inspector-dependency">
+                                    <option value="">No Dependency</option>
+                                </select>
+                            </label>
+                            <label>PROJECT NOTES
+                                <textarea id="project-inspector-notes" maxlength="800" placeholder="記錄修改方向、待確認事項或交付備註..."></textarea>
+                            </label>
+                            <button type="submit">Save Task Changes</button>
+                        </form>
+                    </aside>
+                </section>
+
+                <!-- Smart Workflow Automation Center -->
+                <section
+                    id="automation-center"
+                    class="automation-center"
+                    aria-labelledby="automation-center-title"
+                    aria-hidden="true"
+                >
+                    <header id="automation-center-handle" class="automation-center-header">
+                        <div>
+                            <span class="automation-center-kicker">LOCAL WORKFLOW ENGINE · NO API · DRAG</span>
+                            <h3 id="automation-center-title">Smart Workflow Center</h3>
+                        </div>
+                        <div class="panel-header-actions">
+                            <button id="back-automation-to-hub" class="hub-back-button" type="button">← BACK</button>
+                            <button id="close-automation-center" class="panel-close" type="button" aria-label="關閉智慧工作流程中心">×</button>
+                        </div>
+                    </header>
+
+                    <section class="automation-summary">
+                        <span><b id="automation-active-count">0</b> Active Rules</span>
+                        <span><b id="automation-created-count">0</b> Tasks Created</span>
+                        <span><b id="automation-next-run">—</b> Next Run</span>
+                        <button id="toggle-automation-engine" type="button">Pause Engine</button>
+                        <button id="run-due-automations" type="button">Run Due Now</button>
+                    </section>
+
+                    <form id="automation-rule-form" class="automation-rule-form">
+                        <select id="automation-agent" aria-label="自動任務負責部門">
+                            <option value="auto">Auto · Least Workload</option>
+                            <option value="design-agent">Design</option>
+                            <option value="copywriter-agent">Copywriting</option>
+                            <option value="marketing-agent">Marketing</option>
+                            <option value="photography-agent">Photography</option>
+                            <option value="shipping-agent">Shipping</option>
+                        </select>
+                        <input id="automation-task-title" type="text" maxlength="80" placeholder="週期任務名稱..." required>
+                        <select id="automation-frequency" aria-label="執行頻率">
+                            <option value="daily">Daily</option>
+                            <option value="weekly">Weekly</option>
+                            <option value="monthly">Monthly</option>
+                            <option value="once">One Time</option>
+                        </select>
+                        <input id="automation-time" type="time" value="09:00" aria-label="執行時間">
+                        <select id="automation-due-offset" aria-label="截止日">
+                            <option value="0">Due Today</option>
+                            <option value="1" selected>Due +1 Day</option>
+                            <option value="3">Due +3 Days</option>
+                            <option value="7">Due +7 Days</option>
+                        </select>
+                        <select id="automation-priority" aria-label="優先級">
+                            <option value="normal">Normal</option>
+                            <option value="high">High</option>
+                            <option value="urgent">Urgent</option>
+                            <option value="low">Low</option>
+                        </select>
+                        <button type="submit">Add Rule</button>
+                    </form>
+
+                    <div class="automation-center-body">
+                        <section class="automation-rules-section">
+                            <span class="workspace-label">SCHEDULED RULES</span>
+                            <div id="automation-rules-list" class="automation-rules-list"></div>
+                        </section>
+                        <aside class="automation-insights">
+                            <section>
+                                <span class="workspace-label">DEPARTMENT WORKLOAD</span>
+                                <div id="automation-workload" class="automation-workload"></div>
+                            </section>
+                            <section>
+                                <span class="workspace-label">EXECUTION LOG</span>
+                                <div id="automation-log" class="automation-log"></div>
+                            </section>
+                        </aside>
+                    </div>
+
+                    <p class="automation-center-help">規則只在此瀏覽器本機執行；開啟工作室時會自動補跑已到期的排程。</p>
+                </section>
+
+                <!-- ChatGPT Bridge -->
+                <section
+                    id="chatgpt-bridge-modal"
+                    class="chatgpt-bridge-modal"
+                    aria-labelledby="bridge-title"
+                    aria-hidden="true"
+                >
+                    <header class="bridge-header">
+                        <div>
+                            <span class="bridge-kicker">NO API · NO EXTRA FEE</span>
+                            <h3 id="bridge-title">ChatGPT Bridge</h3>
+                        </div>
+                        <div class="panel-header-actions">
+                            <button id="back-bridge-to-hub" class="hub-back-button" type="button">← BACK</button>
+                            <button id="close-chatgpt-bridge" class="panel-close" type="button" aria-label="關閉 ChatGPT Bridge">×</button>
+                        </div>
+                    </header>
+
+                    <div class="bridge-agent-summary">
+                        <span id="bridge-agent-name">Agent</span>
+                        <span id="bridge-task-name">Current Task</span>
+                    </div>
+
+                    <label class="bridge-field-label" for="bridge-prompt">
+                        1. COPY THIS PROMPT TO CHATGPT
+                    </label>
+                    <textarea
+                        id="bridge-prompt"
+                        class="bridge-textarea bridge-prompt"
+                        spellcheck="false"
+                    ></textarea>
+
+                    <div class="bridge-button-row">
+                        <button id="copy-bridge-prompt" type="button">Copy Prompt</button>
+                        <button id="open-chatgpt-window" type="button">Open ChatGPT</button>
+                    </div>
+
+                    <label class="bridge-field-label" for="bridge-result">
+                        2. PASTE CHATGPT RESPONSE HERE
+                    </label>
+                    <textarea
+                        id="bridge-result"
+                        class="bridge-textarea bridge-result"
+                        placeholder="將 ChatGPT 的完整回覆貼在這裡..."
+                    ></textarea>
+
+                    <div class="bridge-button-row bridge-save-row">
+                        <button id="save-bridge-result" type="button">Save Result</button>
+                        <button id="complete-bridge-task" class="complete-task-button" type="button">
+                            Save &amp; Complete Task
+                        </button>
+                    </div>
+
+                    <section class="bridge-history-section">
+                        <span class="bridge-field-label">SAVED RESULTS</span>
+                        <div id="bridge-result-history" class="bridge-result-history">
+                            尚未保存任何成果。
+                        </div>
+                    </section>
+                </section>
+
+                <div id="office-toast" class="office-toast" role="status" aria-live="polite"></div>
+            </div>
+        </section>
+    </main>
+
+    <div class="office-tooltip" role="tooltip" aria-hidden="true">
+        <div class="tooltip-title">Title</div>
+        <div class="tooltip-description">Description</div>
+    </div>
+
+    <script src="./js/main.js"></script>
+    <script src="./js/tooltip.js"></script>
+    <script src="./js/office-v2.js"></script>
+</body>
+</html>

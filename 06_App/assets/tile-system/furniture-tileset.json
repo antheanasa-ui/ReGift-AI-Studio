@@ -1,0 +1,16 @@
+{
+  "name": "regift-office-furniture",
+  "type": "image-collection",
+  "tilewidth": 32,
+  "tileheight": 32,
+  "tiles": [
+    { "id": 0, "name": "plant", "image": "furniture/plant-32x32.png", "width": 32, "height": 32 },
+    { "id": 1, "name": "chair", "image": "furniture/chair-32x32.png", "width": 32, "height": 32 },
+    { "id": 2, "name": "l-desk", "image": "furniture/l-desk-128x96.png", "width": 128, "height": 96 },
+    { "id": 3, "name": "sofa", "image": "furniture/sofa-160x96.png", "width": 160, "height": 96 },
+    { "id": 4, "name": "bookshelf", "image": "furniture/bookshelf-64x96.png", "width": 64, "height": 96 },
+    { "id": 5, "name": "window", "image": "furniture/window-128x96.png", "width": 128, "height": 96 },
+    { "id": 6, "name": "coffee-bar", "image": "furniture/coffee-bar-128x96.png", "width": 128, "height": 96 },
+    { "id": 7, "name": "wine-rack", "image": "furniture/wine-rack-64x96.png", "width": 64, "height": 96 }
+  ]
+}

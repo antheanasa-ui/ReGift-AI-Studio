@@ -1,0 +1,14 @@
+{
+  "project": "ReGift AI Studio",
+  "appVersion": "7.5.0",
+  "appFolder": "06_App",
+  "deploymentStage": "07_DEPLOYMENT",
+  "deploymentPackageVersion": "1.0.0",
+  "status": "deployment_package_ready",
+  "target": "GitHub Pages",
+  "cost": "free-public-repository",
+  "generatedOn": "2026-07-19",
+  "runtime": "static-html-css-javascript",
+  "requiresBuild": false,
+  "requiresPaidApi": false
+}

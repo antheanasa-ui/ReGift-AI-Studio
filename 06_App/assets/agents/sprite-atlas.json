@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "release": "7.5.0",
+  "columns": 4,
+  "rows": 4,
+  "sourceSize": {
+    "width": 1256,
+    "height": 1256
+  },
+  "renderFrame": {
+    "width": 108,
+    "height": 108
+  },
+  "states": {
+    "idle": 0,
+    "walk": 1,
+    "work": 2,
+    "rest": 3
+  },
+  "agents": {
+    "design-agent": "./design-agent-sprite.png",
+    "copywriter-agent": "./copywriter-agent-sprite.png",
+    "marketing-agent": "./marketing-agent-sprite.png",
+    "photography-agent": "./photography-agent-sprite.png",
+    "shipping-agent": "./shipping-agent-sprite.png"
+  }
+}
