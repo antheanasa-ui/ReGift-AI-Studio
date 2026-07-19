@@ -1,0 +1,82 @@
+{
+    "studio": {
+        "name": "ReGift AI Studio",
+        "version": "7.5.0",
+        "layout": "single-screen",
+        "storage": "localStorage",
+        "bridge": "ChatGPT"
+    },
+    "agents": [
+        {
+            "id": "design-agent",
+            "name": "Design Agent",
+            "role": "Brand & Visual Designer",
+            "status": "working",
+            "description": "負責品牌視覺、卡片、書約與包裝設計。",
+            "restMessage": "休息中：在 Sofa Lounge 補充咖啡與設計靈感。",
+            "tasks": [
+                "設計下一款彌月卡版型",
+                "建立結婚書約配色提案",
+                "整理 ReGift 品牌視覺語言",
+                "檢查印刷檔案與安全邊界",
+                "更新商品攝影 Mood Board"
+            ]
+        },
+        {
+            "id": "copywriter-agent",
+            "name": "Copywriter Agent",
+            "role": "Brand Copywriter",
+            "status": "working",
+            "description": "負責品牌故事、商品文案與社群內容。",
+            "tasks": [
+                "撰寫彌月卡商品故事",
+                "整理 ReGift 品牌語氣指南",
+                "優化結婚書約商品介紹",
+                "構思包裝小卡溫暖短句",
+                "撰寫本週社群貼文"
+            ]
+        },
+        {
+            "id": "marketing-agent",
+            "name": "Marketing Agent",
+            "role": "Campaign Strategist",
+            "status": "working",
+            "description": "負責社群企劃、活動曝光與成效追蹤。",
+            "tasks": [
+                "規劃父親節社群活動",
+                "整理本週內容行事曆",
+                "分析商品頁瀏覽表現",
+                "建立新品曝光節奏",
+                "準備 ReGift 品牌貼文"
+            ]
+        },
+        {
+            "id": "photography-agent",
+            "name": "Photography Agent",
+            "role": "Product Photographer",
+            "status": "working",
+            "description": "負責商品攝影、燈光配置與影像整理。",
+            "tasks": [
+                "調整彌月卡商品燈光",
+                "拍攝結婚書約情境照",
+                "整理商品主圖色調",
+                "建立深色商拍背景",
+                "輸出電商平台尺寸"
+            ]
+        },
+        {
+            "id": "shipping-agent",
+            "name": "Shipping Agent",
+            "role": "Order & Fulfillment",
+            "status": "working",
+            "description": "負責訂單確認、品質檢查、包裝與物流。",
+            "tasks": [
+                "確認今日待出貨訂單",
+                "檢查卡片印刷品質",
+                "準備包裝紙箱與貼紙",
+                "列印物流標籤",
+                "更新庫存與出貨狀態"
+            ]
+        }
+    ]
+}

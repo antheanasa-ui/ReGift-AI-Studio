@@ -1,0 +1,37 @@
+{
+  "format": "regift-tilemap-v1",
+  "orientation": "orthogonal",
+  "renderScale": 2,
+  "width": 20,
+  "height": 10,
+  "tilewidth": 32,
+  "tileheight": 32,
+  "tileset": "tileset.json",
+  "furnitureTileset": "furniture-tileset.json",
+  "layers": [
+    { "name": "floor", "type": "fill", "tile": "floor-walnut", "x": 0, "y": 0, "width": 20, "height": 10 },
+    { "name": "back-wall", "type": "fill", "tile": "wall-brick", "x": 0, "y": 0, "width": 20, "height": 2 },
+    { "name": "lounge-rug", "type": "fill", "tile": "rug-coral", "x": 11, "y": 7, "width": 5, "height": 2 }
+  ],
+  "objects": [
+    { "asset": "window", "x": 1, "y": 0 },
+    { "asset": "window", "x": 13, "y": 0 },
+    { "asset": "bookshelf", "x": 0, "y": 2 },
+    { "asset": "bookshelf", "x": 18, "y": 1 },
+    { "asset": "l-desk", "x": 1, "y": 2 },
+    { "asset": "chair", "x": 4, "y": 4 },
+    { "asset": "l-desk", "x": 7, "y": 2 },
+    { "asset": "chair", "x": 8, "y": 4 },
+    { "asset": "l-desk", "x": 11, "y": 2 },
+    { "asset": "chair", "x": 13, "y": 4 },
+    { "asset": "bookshelf", "x": 1, "y": 6 },
+    { "asset": "l-desk", "x": 15, "y": 5 },
+    { "asset": "chair", "x": 18, "y": 7 },
+    { "asset": "coffee-bar", "x": 6, "y": 5 },
+    { "asset": "wine-rack", "x": 10, "y": 5 },
+    { "asset": "sofa", "x": 11, "y": 7 },
+    { "asset": "plant", "x": 0, "y": 5 },
+    { "asset": "plant", "x": 5, "y": 7 },
+    { "asset": "plant", "x": 17, "y": 7 }
+  ]
+}

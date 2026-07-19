@@ -1,0 +1,20 @@
+{
+  "name": "ReGift AI Studio",
+  "short_name": "ReGift Studio",
+  "description": "A warm isometric AI Agent office for ReGift studio operations.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#2e3732",
+  "theme_color": "#4c6256",
+  "lang": "zh-Hant",
+  "icons": [
+    {
+      "src": "./assets/regift-app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

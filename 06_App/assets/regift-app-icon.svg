@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title description">
+  <title id="title">ReGift AI Studio</title>
+  <desc id="description">Warm pixel-style gift studio icon</desc>
+  <rect width="512" height="512" rx="96" fill="#35453d"/>
+  <rect x="64" y="72" width="384" height="368" rx="48" fill="#e8d9b8"/>
+  <path d="M96 184h320v224H96z" fill="#8b6856"/>
+  <path d="M128 216h256v160H128z" fill="#cfad78"/>
+  <path d="M256 136c-32-48-96-48-96 8 0 40 48 56 96 88 48-32 96-48 96-88 0-56-64-56-96-8z" fill="#a95f54"/>
+  <path d="M232 224h48v152h-48zM128 280h256v48H128z" fill="#f1e4c6"/>
+  <rect x="80" y="88" width="72" height="24" fill="#91aa80"/>
+  <rect x="360" y="400" width="72" height="24" fill="#91aa80"/>
+</svg>
